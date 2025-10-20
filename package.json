@@ -1,0 +1,157 @@
+{
+  "name": "git-commit-msg-generator",
+  "displayName": "Git Commit Message Generator",
+  "description": "AI-powered commit message generator supporting multiple AI providers (OpenAI, Claude, Gemini, Local Models)",
+  "version": "1.0.0",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "git-commit-msg-generator.generateCommitMessage",
+        "title": "Generate Commit Message",
+        "icon": "$(sparkle)"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "git-commit-msg-generator.generateCommitMessage",
+          "group": "navigation",
+          "when": "scmProvider == git"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Git Commit Message Generator",
+      "properties": {
+        "gitCommitMsgGenerator.aiProvider": {
+          "type": "string",
+          "default": "openai",
+          "enum": [
+            "openai",
+            "anthropic",
+            "google",
+            "ollama",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "OpenAI (GPT-3.5/GPT-4)",
+            "Anthropic (Claude)",
+            "Google (Gemini)",
+            "Ollama (Local Models)",
+            "Custom API Endpoint"
+          ],
+          "description": "Select the AI provider to use for generating commit messages"
+        },
+        "gitCommitMsgGenerator.openaiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key (required for OpenAI provider)"
+        },
+        "gitCommitMsgGenerator.openaiModel": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "enum": [
+            "gpt-3.5-turbo",
+            "gpt-4",
+            "gpt-4-turbo"
+          ],
+          "description": "OpenAI model to use"
+        },
+        "gitCommitMsgGenerator.anthropicApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API Key (required for Claude)"
+        },
+        "gitCommitMsgGenerator.anthropicModel": {
+          "type": "string",
+          "default": "claude-3-sonnet-20240229",
+          "enum": [
+            "claude-3-opus-20240229",
+            "claude-3-sonnet-20240229",
+            "claude-3-haiku-20240307"
+          ],
+          "description": "Anthropic model to use"
+        },
+        "gitCommitMsgGenerator.googleApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Google API Key (required for Gemini)"
+        },
+        "gitCommitMsgGenerator.googleModel": {
+          "type": "string",
+          "default": "gemini-pro",
+          "enum": [
+            "gemini-pro",
+            "gemini-1.5-pro",
+            "gemini-1.5-flash"
+          ],
+          "description": "Google Gemini model to use"
+        },
+        "gitCommitMsgGenerator.ollamaEndpoint": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama API endpoint URL"
+        },
+        "gitCommitMsgGenerator.ollamaModel": {
+          "type": "string",
+          "default": "llama2",
+          "description": "Ollama model name (e.g., llama2, codellama, mistral)"
+        },
+        "gitCommitMsgGenerator.customEndpoint": {
+          "type": "string",
+          "default": "",
+          "description": "Custom API endpoint URL"
+        },
+        "gitCommitMsgGenerator.customApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Custom API key"
+        },
+        "gitCommitMsgGenerator.commitStyle": {
+          "type": "string",
+          "default": "conventional",
+          "enum": [
+            "conventional",
+            "simple",
+            "detailed"
+          ],
+          "enumDescriptions": [
+            "Conventional Commits format (feat:, fix:, etc.)",
+            "Simple one-liner description",
+            "Detailed with bullet points"
+          ],
+          "description": "Commit message style"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "node ./esbuild.js",
+    "watch": "node ./esbuild.js --watch",
+    "package": "node ./esbuild.js --production",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "esbuild": "^0.19.8",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
+}

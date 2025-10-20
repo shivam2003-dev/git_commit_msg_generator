@@ -1,0 +1,58 @@
+{
+  "// Example VS Code settings for Git Commit Message Generator": "",
+  "// Copy the settings you need to your settings.json": "",
+  
+  "// === PROVIDER SELECTION ===": "",
+  "gitCommitMsgGenerator.aiProvider": "openai",
+  "// Options: 'openai' | 'anthropic' | 'google' | 'ollama' | 'custom'": "",
+  
+  "// === OPENAI SETTINGS ===": "",
+  "gitCommitMsgGenerator.openaiApiKey": "sk-your-key-here",
+  "gitCommitMsgGenerator.openaiModel": "gpt-3.5-turbo",
+  "// Options: 'gpt-3.5-turbo' | 'gpt-4' | 'gpt-4-turbo'": "",
+  
+  "// === ANTHROPIC (CLAUDE) SETTINGS ===": "",
+  "gitCommitMsgGenerator.anthropicApiKey": "sk-ant-your-key-here",
+  "gitCommitMsgGenerator.anthropicModel": "claude-3-sonnet-20240229",
+  "// Options: 'claude-3-opus-20240229' | 'claude-3-sonnet-20240229' | 'claude-3-haiku-20240307'": "",
+  
+  "// === GOOGLE (GEMINI) SETTINGS ===": "",
+  "gitCommitMsgGenerator.googleApiKey": "your-google-api-key",
+  "gitCommitMsgGenerator.googleModel": "gemini-pro",
+  "// Options: 'gemini-pro' | 'gemini-1.5-pro' | 'gemini-1.5-flash'": "",
+  
+  "// === OLLAMA (LOCAL) SETTINGS ===": "",
+  "gitCommitMsgGenerator.ollamaEndpoint": "http://localhost:11434",
+  "gitCommitMsgGenerator.ollamaModel": "llama2",
+  "// Popular models: 'llama2' | 'codellama' | 'mistral' | 'phi' | 'deepseek-coder'": "",
+  
+  "// === CUSTOM API SETTINGS ===": "",
+  "gitCommitMsgGenerator.customEndpoint": "https://your-api.com/generate",
+  "gitCommitMsgGenerator.customApiKey": "your-custom-key",
+  
+  "// === MESSAGE STYLE ===": "",
+  "gitCommitMsgGenerator.commitStyle": "conventional",
+  "// Options: 'conventional' | 'simple' | 'detailed'": "",
+  
+  "// === EXAMPLES ===": "",
+  "// Example 1: Using OpenAI": {
+    "gitCommitMsgGenerator.aiProvider": "openai",
+    "gitCommitMsgGenerator.openaiApiKey": "sk-...",
+    "gitCommitMsgGenerator.openaiModel": "gpt-3.5-turbo",
+    "gitCommitMsgGenerator.commitStyle": "conventional"
+  },
+  
+  "// Example 2: Using Ollama (Local, Free)": {
+    "gitCommitMsgGenerator.aiProvider": "ollama",
+    "gitCommitMsgGenerator.ollamaEndpoint": "http://localhost:11434",
+    "gitCommitMsgGenerator.ollamaModel": "llama2",
+    "gitCommitMsgGenerator.commitStyle": "simple"
+  },
+  
+  "// Example 3: Using Claude": {
+    "gitCommitMsgGenerator.aiProvider": "anthropic",
+    "gitCommitMsgGenerator.anthropicApiKey": "sk-ant-...",
+    "gitCommitMsgGenerator.anthropicModel": "claude-3-haiku-20240307",
+    "gitCommitMsgGenerator.commitStyle": "detailed"
+  }
+}
